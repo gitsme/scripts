@@ -1,3 +1,6 @@
 # Sjekker om modulus er identisk for crt og key for SSL sertifikat
 # Bytt ut 'a' med navnet på siten.
 SITE=a     && CRT=$(openssl x509 -in crt/$SITE -noout -modulus) && KEY=$(openssl rsa -in key/$SITE -noout -modulus) && diff $CRT $KEY
+
+echo "Type inn the site name" && read SITE && CRT=$(openssl x509 -in crt/$SITE -noout -modulus) && KEY=$(openssl rsa -in key/$SITE -noout -modulus) && if [ $CRT == $KEY ]; then echo "same"; else echo "not same"; fi
+
