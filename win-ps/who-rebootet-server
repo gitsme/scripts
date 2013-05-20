@@ -1,0 +1,4 @@
+# Grabs last eventlogs in system, with source user32,
+# to help figure out if a user rebootet the server last time
+
+Get-EventLog -logname system -source user32 -newest 1 | format-table -wrap
